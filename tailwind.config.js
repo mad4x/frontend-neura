@@ -7,7 +7,31 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          'dark': ' #001c35', // Blu scuro
+          'medium': '# #0d263d',   // Blu medio
+          'light': ' #0d375d',    // Blu chiaro
+        },
+
+        backgorund: {
+          'screen': '  #f7f7fc', //sfondo pagina
+          'color-box': ' #ffffff', //sfondo contenitori
+        },
+
+        spid: {
+          'box': ' #0066cc', //sfondo di spid
+        },
+
+      },
+      fontFamily: {
+        LOVELO: ['LOVELO', 'sans-serif'],        // Font LOVELO
+        Quicksand: ['Quicksand', 'sans-serif'],  // Font Quicksand
+        ALLROUNDER: ['ALLROUNDER', 'sans-serif'],// Font ALLROUNDER
+        Titilium: ['Titilium', 'sans-serif'],    // Font Titilium
+      },
+    },
   },
   plugins: [],
 }
