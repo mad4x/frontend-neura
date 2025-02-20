@@ -18,11 +18,12 @@ const colors = { lightColor, mediumColor, darkColor };
 
 type BackgroundProps = {
   children: ReactNode; // Tipo corretto per i figli
+  className?: string;
 };
 
-const Background: React.FC<BackgroundProps> = ({ children }) => {
+const Background: React.FC<BackgroundProps> = ({ children, className }) => {
   return (
-      <SafeAreaView className="flex flex-1 relative bg-blue-100">
+      <SafeAreaView className={`relative ${className}`}>
           {/* I children sono posizionati sopra il background */}
           <View className="absolute top-0 left-0 right-0 bottom-0 z-1">
               {children}
