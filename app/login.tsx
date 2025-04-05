@@ -1,6 +1,6 @@
 import {View, Text, TextInput, Image} from 'react-native'
 import React from 'react'
-import {Link} from "expo-router";
+import {Link, router} from "expo-router";
 import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
 import {icons} from "@/constants"
@@ -25,12 +25,12 @@ const Login = () => {
             <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Accedi</Text>
           </View>
 
-          <View className="border rounded-xl bg-neutral-100 px-3 ">
+          <View className="border rounded-xl bg-neutral-100 px-3 py-1.5">
             <TextInput placeholder="email">
             </TextInput>
           </View>
 
-          <View className="border rounded-xl bg-neutral-100 px-3 ">
+          <View className="border rounded-xl bg-neutral-100 px-3 py-1.5">
             <TextInput placeholder="password">
             </TextInput>
           </View>
@@ -61,6 +61,17 @@ const Login = () => {
             <CustomButton title="Spid" className="bg-blue-400"/>
 
           </View>
+        </View>
+
+        <View>
+          <View className="flex flex-col bg-black h-[1.5px]" />
+
+          <Text className="text-md tracking-wide uppercase text-black">
+            Non hai un account?
+          </Text>
+
+          <CustomButton title="Registrati" className="bg-blue-950" textStyle="text-white" onPress={() => router.push("/getAudio")}/>
+
         </View>
 
 
