@@ -8,3 +8,16 @@ declare interface ButtonProps extends TouchableOpacityProps {
   className?: string;
   textStyle?: string;
 }
+
+declare interface CardProps {
+  title: string;
+  titleStyle?: string;
+  description: string;
+  descriptionStyle?: string;
+  buttonTitle: string;
+  onPress?: () => void;
+  className?: string;
+  classNameIcons?: string;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
+}

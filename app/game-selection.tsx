@@ -1,14 +1,15 @@
-import {View, Text} from 'react-native'
+import {View, Text, Image} from 'react-native'
 import React from 'react'
 import Background from "@/components/Background";
-import CustomButton from "@/components/CustomButton";
+import CustomCard from "@/components/CustomCard";
+import {icons} from "@/constants";
 
 const GameSelection = () => {
     return (
         <Background className="flex flex-1 flex-col align-center h-screen -z-10">
 
             <View className="flex flex-col z-10 mx-10 text-white">
-                {/* Title */}
+
                 <View className="flex flex-col justify-center items-left mt-16 mb-10">
                     <View className="gap-y-2">
                         <Text className="text-6xl font-normal tracking-widest uppercase text-white">Selezione</Text>
@@ -16,16 +17,16 @@ const GameSelection = () => {
                     </View>
                 </View>
 
-                <View className="items-center gap-4">
-                    {/* Card */}
-                    <View className="border rounded-xl bg-neutral-100 p-4 w-3/4 h-48">
-                        <Text className="text-2xl font-bold text-black">Gioco Visivo</Text>
-                        <Text className="text-md text-black mt-2"></Text>
-                        <CustomButton title="Giochiamo!" className="text-center" textStyle="text-black tracking-widest" />
-                    </View>
+                <View className="items-center align-items gap-4">
+                    <CustomCard
+                    title={"Gioco Visivo"}
+                    description={"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"}
+                    buttonTitle={"Giochiamo!"}
+                    iconRight={<Image source={icons.eye} className="w-auto h-auto"/>}
+                    />
                 </View>
-
             </View>
+
         </Background>
     )
 }
