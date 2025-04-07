@@ -1,6 +1,6 @@
-import {Text, TouchableOpacity} from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import {ButtonProps} from "@/types/type";
+import { ButtonProps } from "@/types/type";
 
 const CustomButton = ({
   title,
@@ -14,7 +14,7 @@ const CustomButton = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      className={`rounded-[20px] px-[25px] py-[9px] shadow-black elevation-xl self-start flex flex-row gap-x-3 items-center ${className}`}
+      className={`rounded-[20px] shadow-black elevation-xl self-start flex flex-row gap-x-3 items-center ${className}`}
       {...props}
     >
       {IconLeft}

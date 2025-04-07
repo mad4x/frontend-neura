@@ -1,6 +1,6 @@
-import {View, Text, TextInput, Image} from 'react-native'
+import { View, Text, TextInput, Image } from 'react-native'
 import React from 'react'
-import {Link, router} from "expo-router";
+import { Link } from "expo-router";
 import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
 import {icons} from "@/constants"
@@ -69,8 +69,6 @@ const Login = () => {
           <Text className="text-md tracking-wide uppercase text-black">
             Non hai un account?
           </Text>
-
-          <CustomButton title="Registrati" className="bg-blue-950" textStyle="text-white" onPress={() => router.push("/getAudio")}/>
 
         </View>
 

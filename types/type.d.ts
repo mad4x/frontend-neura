@@ -9,3 +9,11 @@ declare interface ButtonProps extends TouchableOpacityProps {
   className?: string;
   textStyle?: string;
 }
+
+declare interface AudioRecordingProps {
+  onRecordingFinished: (uri: string) => void;
+}
+
+declare interface AudioCaptureScreenProps {
+  refreshSentence: () => void;
+}

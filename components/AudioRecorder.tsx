@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, Text, Alert, StyleSheet } from "react-native";
+import { View, Alert } from "react-native";
 import { Audio } from "expo-av";
 import CustomButton from "@/components/CustomButton";
+import { AudioRecordingProps } from "@/types/type";
 
-const AudioRecorder = () => {
+const AudioRecorder: React.FC<AudioRecordingProps> = ({ onRecordingFinished }) => {
     const [recording, setRecording] = useState<Audio.Recording | null>(null);
-    const [audioUri, setAudioUri] = useState<string | null>(null);
 
     const startRecording = async () => {
         try {
@@ -35,61 +35,23 @@ const AudioRecorder = () => {
 
         await recording.stopAndUnloadAsync();
         const uri = recording.getURI();
-
-        if (uri) {
-            setAudioUri(uri);
-            console.log("Audio salvato in:", uri);
-        } else {
-            Alert.alert("Errore", "URI non disponibile");
-        }
-
+        if (uri) onRecordingFinished(uri);
+        else Alert.alert("Errore", "URI non disponibile");
         setRecording(null);
     };
 
-    const inviaAllApi = async () => { console.log("inviaAllApi"); };
-
     return (
-        <View style={styles.container}>
-            <TouchableOpacity
-                style={[styles.button, { backgroundColor: recording ? "red" : "green" }]}
-                onPress={recording ? stopRecording : startRecording}
-            >
-                <Text style={styles.buttonText}>
-                    {recording ? "Ferma Registrazione" : "Avvia Registrazione"}
-                </Text>
-            </TouchableOpacity>
-
-            {audioUri && (
-                <View className="justify-center my-5">
-                    <Text>Audio salvato in:</Text>
-                    <Text selectable>{audioUri}</Text>
-                    <CustomButton
-                        title="Invia registrazione"
-                        className="bg-blue-950"
-                        textStyle="text-white"
-                        onPress={() => inviaAllApi()}
-                    />
-                </View>
-            )}
+        <View className="items-center">
+            <CustomButton
+                title={recording ? "ferma registrazione" : "avvia registrazione"}
+                onPress={recording ?
+                    () => stopRecording() :
+                    () => startRecording()}
+                className={recording ? "bg-red-700 py-8 px-10" : "bg-green-700 py-8 px-10"}
+                textStyle="text-white text-xl"
+            />
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-        alignItems: "center",
-    },
-    button: {
-        paddingVertical: 15,
-        paddingHorizontal: 30,
-        borderRadius: 10,
-    },
-    buttonText: {
-        color: "white",
-        fontWeight: "bold",
-        fontSize: 16,
-    },
-});
 
 export default AudioRecorder;
