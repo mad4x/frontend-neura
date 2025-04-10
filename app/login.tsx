@@ -35,14 +35,17 @@ const Login = () => {
             </TextInput>
           </View>
 
-          <Link className="text-md text-right font-normal tracking-wide uppercase underline text-white" href="/">Password dimenticata?</Link>
+            <View className="rounded-2xl bg-[#133250] px-2 py-1 self-end">
+              <Link className="text-md text-right font-normal tracking-wide uppercase underline text-white" href="/">Password dimenticata?</Link>
+            </View>
+
 
         {/*
           <TouchableOpacity className="bg-black rounded-[20px] px-[29px] py-[9px] shadow-black elevation-xl self-start" >
             <Text className="text-white font-bold uppercase tracking-widest">Login</Text>
           </TouchableOpacity>
         */}
-          <CustomButton title="Login" className="bg-black" textStyle="text-white tracking-widest"/>
+          <CustomButton title="Login" className="bg-black px-10 py-3" textStyle="text-white tracking-widest"/>
 
 
         </View>
@@ -55,10 +58,10 @@ const Login = () => {
             login con altro
           </Text>
 
-          <View className="flex flex-row justify-center items-center mt-8 gap-x-14">
+          <View className="flex flex-row justify-center items-center my-4 gap-x-10">
 
-            <CustomButton title="Google" className="bg-white" textStyle="text-black tracking-wide" IconLeft={<Image source={icons.google} className="w-5 h-5" />} />
-            <CustomButton title="Spid" className="bg-blue-400"/>
+            <CustomButton title="Google" className="bg-white px-10 py-3" textStyle="text-black tracking-wide" IconLeft={<Image source={icons.google} className="w-5 h-5" />} />
+            <CustomButton title="Spid" className="bg-blue-400 px-10 py-3"/>
 
           </View>
         </View>
