@@ -19,10 +19,12 @@ const GameSelection = () => {
 
                 <View className="items-center align-items gap-4">
                     <CustomCard
-                    title={"Gioco Visivo"}
-                    description={"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"}
+                    title={"Ripeti La Frase!"}
+                    description={"Un gioco di memoria e attenzione: ascolta una frase e ripetila esattamente.\n " +
+                        "Sembra facile, ma diventa sempre più difficile! Allena la mente e sfida i tuoi riflessi verbali."}
                     buttonTitle={"Giochiamo!"}
-                    iconRight={<Image source={icons.eye} className="w-auto h-auto"/>}
+                    iconRight={<Image source={icons.lips} className="w-auto h-auto"/>}
+                    onPress={() => {console.log("bottone cliccato")}}
                     />
                 </View>
             </View>

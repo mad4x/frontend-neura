@@ -24,22 +24,22 @@ const SignIn = () => {
                         <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Registrati</Text>
                     </View>
 
-                    <View className="border rounded-xl bg-neutral-100 px-3 ">
-                        <TextInput placeholder="email" placeholderTextColor="#6b7280">
+                    <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+                        <TextInput placeholder="email" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
 
-                    <View className="border rounded-xl bg-neutral-100 px-3 ">
-                        <TextInput placeholder="password" placeholderTextColor="#6b7280">
+                    <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+                        <TextInput placeholder="password" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
 
-                    <View className="border rounded-xl bg-neutral-100 px-3">
-                        <TextInput placeholder="conferma password" placeholderTextColor="#6b7280">
+                    <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+                        <TextInput placeholder="conferma password" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
 
-                    <CustomButton title="Registrati" className="bg-black" textStyle="text-white tracking-widest"/>
+                    <CustomButton title="Registrati" className="bg-black mt-5" textStyle="text-white tracking-widest"/>
 
                 </View>
 
