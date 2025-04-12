@@ -2,7 +2,6 @@ import { View, Text, TextInput } from 'react-native';
 import React from 'react';
 import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
-import {router} from "expo-router";
 
 const SignIn = () => {
 
@@ -13,7 +12,7 @@ const SignIn = () => {
                 {/* Title */}
                 <View className="flex flex-col justify-center items-left mt-16 mb-10">
                     <View className="gap-y-2">
-                        <Text className="text-4xl font-normal tracking-wide uppercase text-white">Registrati su</Text>
+                        <Text className="text-4xl font-normal tracking-wide uppercase text-white">Crea il tuo account su</Text>
                         <Text className="text-6xl font-extrabold tracking-widest uppercase text-white">Neura</Text>
                     </View>
                 </View>
@@ -26,23 +25,25 @@ const SignIn = () => {
                     </View>
 
                     <View className="border rounded-xl bg-neutral-100 px-3 py-2">
-                        <TextInput placeholder="email" placeholderTextColor="#404040" className="color-black">
+                        <TextInput placeholder="Nome" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
 
                     <View className="border rounded-xl bg-neutral-100 px-3 py-2">
-                        <TextInput placeholder="password" placeholderTextColor="#404040" className="color-black">
+                        <TextInput placeholder="Cognome" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
 
                     <View className="border rounded-xl bg-neutral-100 px-3 py-2">
-                        <TextInput placeholder="conferma password" placeholderTextColor="#404040" className="color-black">
-                        </TextInput>
+                        <TextInput
+                            placeholder="Data Di Nascita (gg/mm/aaaa)"
+                            placeholderTextColor="#404040"
+                            className="color-black"
+                            textContentType="birthdate"
+                        />
                     </View>
 
-                    <CustomButton title="Registrati" className="bg-black mt-5" textStyle="text-white tracking-widest" onPress={() => {
-                        router.push('/account-creation');
-                    }}/>
+                    <CustomButton title="Crea" className="bg-black mt-5" textStyle="text-white tracking-widest" />
 
                 </View>
 
