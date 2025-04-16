@@ -33,12 +33,12 @@ const GetAudio = () => {
             <View className="z-10 my-16 mx-10 gap-y-4">
                 <Text className="text-6xl font-normal tracking-wide uppercase text-white">Leggi la frase</Text>
 
-                <View className="my-8">
-                    <View className="bg-neutral-100 p-5 rounded-xl my-5">
+                <View className="mt-2 mb-8">
+                    <View className="bg-neutral-100 p-5 rounded-xl mb-8">
                         <Text className="text-blackr text-xl font-semibold">{frase}</Text>
                     </View>
 
-                    <AudioCaptureScreen refreshSentence={generateSentence}/>
+                    <AudioCaptureScreen refreshSentence={generateSentence} />
                 </View>
             </View>
 

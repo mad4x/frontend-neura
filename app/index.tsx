@@ -4,7 +4,7 @@ import {Redirect} from "expo-router";
 export default function Index() {
   return (
     <View>
-      <Redirect href="/getAudio"></Redirect>
+      <Redirect href="/speakingGameRules"></Redirect>
     </View>
   );
 }

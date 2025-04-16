@@ -17,3 +17,17 @@ declare interface AudioRecordingProps {
 declare interface AudioCaptureScreenProps {
   refreshSentence: () => void;
 }
+
+declare interface CardProps {
+  title: string;
+  titleStyle?: string;
+  description: string | React.ReactNode<Text>;
+  descriptionStyle?: string;
+  buttonTitle: string;
+  onPress?: () => void;
+  className?: string;
+  classNameIcons?: string;
+  bgColor?: string;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
+}
