@@ -24,17 +24,17 @@ const SignIn = () => {
                         <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Registrati</Text>
                     </View>
 
-                    <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+                    <View className="border rounded-xl bg-neutral-100 px-3 py-3">
                         <TextInput placeholder="Nome" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
 
-                    <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+                    <View className="border rounded-xl bg-neutral-100 px-3 py-3">
                         <TextInput placeholder="Cognome" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
 
-                    <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+                    <View className="border rounded-xl bg-neutral-100 px-3 py-3">
                         <TextInput
                             placeholder="Data Di Nascita (gg/mm/aaaa)"
                             placeholderTextColor="#404040"

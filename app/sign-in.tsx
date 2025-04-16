@@ -25,17 +25,17 @@ const SignIn = () => {
                         <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Registrati</Text>
                     </View>
 
-                    <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+                    <View className="border rounded-xl bg-neutral-100 px-3 py-3">
                         <TextInput placeholder="email" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
 
-                    <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+                    <View className="border rounded-xl bg-neutral-100 px-3 py-3">
                         <TextInput placeholder="password" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
 
-                    <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+                    <View className="border rounded-xl bg-neutral-100 px-3 py-3">
                         <TextInput placeholder="conferma password" placeholderTextColor="#404040" className="color-black">
                         </TextInput>
                     </View>
@@ -43,6 +43,13 @@ const SignIn = () => {
                     <CustomButton title="Registrati" className="bg-black mt-5" textStyle="text-white tracking-widest" onPress={() => {
                         router.push('/account-creation');
                     }}/>
+
+                    <Text
+                        className="text-md text-right font-normal tracking-wide uppercase underline mt-4 color-black"
+                        onPress={() => router.push('/login')}
+                    >
+                        Non hai un account? Registrati!
+                    </Text>
 
                 </View>
 

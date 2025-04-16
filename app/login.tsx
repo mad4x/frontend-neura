@@ -1,9 +1,10 @@
 import {View, Text, TextInput, Image} from 'react-native'
 import React from 'react'
-import {Link} from "expo-router";
+import {Link, router} from "expo-router";
 import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
 import {icons} from "@/constants"
+
 
 const Login = () => {
   return (
@@ -25,12 +26,12 @@ const Login = () => {
             <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Accedi</Text>
           </View>
 
-          <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+          <View className="border rounded-xl bg-neutral-100 px-3 py-3">
             <TextInput placeholder="email" placeholderTextColor="#404040" className="text-black">
             </TextInput>
           </View>
 
-          <View className="border rounded-xl bg-neutral-100 px-3 py-2">
+          <View className="border rounded-xl bg-neutral-100 px-3 py-3">
             <TextInput placeholder="password" placeholderTextColor="#404040" className="text-black">
             </TextInput>
           </View>
@@ -39,6 +40,12 @@ const Login = () => {
 
           <CustomButton title="Login" className="bg-black" textStyle="text-white tracking-widest"/>
 
+          <Text
+              className="text-md text-right font-normal tracking-wide uppercase underline mt-4 color-black"
+              onPress={() => router.push('/sign-in')}
+          >
+            Non hai un account? Registrati!
+          </Text>
 
         </View>
 
