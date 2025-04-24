@@ -43,7 +43,11 @@ const SignIn = () => {
                         />
                     </View>
 
-                    <CustomButton title="Crea" className="bg-black mt-5" textStyle="text-white tracking-widest" />
+                    <CustomButton
+                        title="Crea"
+                        className="bg-black mt-5"
+                        textStyle="text-white tracking-widest"
+                    />
 
                 </View>
 
