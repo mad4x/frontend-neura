@@ -3,6 +3,7 @@ import React from 'react'
 import Background from "@/components/Background";
 import CustomCard from "@/components/CustomCard";
 import {icons} from "@/constants";
+import {router} from "expo-router";
 
 const GameSelection = () => {
     return (
@@ -24,7 +25,7 @@ const GameSelection = () => {
                         "Sembra facile, ma diventa sempre più difficile! Allena la mente e sfida i tuoi riflessi verbali."}
                     buttonTitle={"Giochiamo!"}
                     iconRight={<Image source={icons.lips} className="w-auto h-auto"/>}
-                    onPress={() => {console.log("bottone cliccato")}}
+                    onPress={() => {router.push('/games/ripeti-la-frase')}}
                     />
                 </View>
             </View>

@@ -1,6 +1,6 @@
-import {View, Text, TextInput, Image, KeyboardAvoidingView} from 'react-native'
+import {View, Text, TextInput, Image} from 'react-native'
 import React from 'react'
-import { Link } from "expo-router";
+import {Link} from "expo-router";
 import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
 import {icons} from "@/constants"
@@ -18,22 +18,22 @@ const Login = () => {
             </View>
           </View>
 
-          {/* Login field */}
-          <KeyboardAvoidingView className="flex flex-col justify-center items-left my-6 gap-y-3.5">
+        {/* Login field */}
+        <View className="flex flex-col justify-center items-left my-8 gap-y-3.5">
 
-            <View>
-              <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Accedi</Text>
-            </View>
+          <View>
+            <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Accedi</Text>
+          </View>
 
-            <View className="border rounded-xl bg-neutral-100 px-3 py-1.5">
-              <TextInput placeholder="email">
-              </TextInput>
-            </View>
+          <View className="border rounded-xl bg-neutral-100 px-3 py-3">
+            <TextInput placeholder="email" placeholderTextColor="#404040" className="text-black">
+            </TextInput>
+          </View>
 
-            <View className="border rounded-xl bg-neutral-100 px-3 py-1.5">
-              <TextInput placeholder="password">
-              </TextInput>
-            </View>
+          <View className="border rounded-xl bg-neutral-100 px-3 py-3">
+            <TextInput placeholder="password" placeholderTextColor="#404040" className="text-black">
+            </TextInput>
+          </View>
 
             <View className="rounded-2xl bg-[#133250] px-2 py-1 self-end">
               <Link className="text-md text-right font-normal tracking-wide uppercase underline text-white" href="/">Password dimenticata?</Link>
@@ -45,13 +45,11 @@ const Login = () => {
                 textStyle="text-white tracking-widest"
             />
 
-          </KeyboardAvoidingView>
+          </View>
 
           <View className="flex flex-col bg-black h-[1.5px]" />
 
-
           <View className="flex flex-col justify-center items-center my-3">
-
             <Text className="text-md tracking-wide uppercase text-black">
               login con altro
             </Text>
@@ -70,29 +68,25 @@ const Login = () => {
                   className="bg-blue-400 px-10 py-3"
               />
 
+              </View>
             </View>
-          </View>
 
-          <View className="flex flex-col bg-black h-[1.5px]" />
+            <View className="flex flex-col bg-black h-[1.5px]" />
 
-          <View className="items-center my-4">
+            <View className="items-center my-4">
+                <Text className="text-md tracking-wide uppercase text-black">
+                    Non hai un account?
+                </Text>
 
-            <Text className="text-md tracking-wide uppercase text-black">
-              Non hai un account?
-            </Text>
+                <CustomButton
+                    title="Registrati"
+                    className="my-3 bg-black py-3 px-10"
+                    textStyle="text-white tracking-widest"
+                />
+            </View>
 
-            <CustomButton
-                title="Registrati"
-                className="my-3 bg-black py-3 px-10"
-                textStyle="text-white tracking-widest"
-            />
-
-          </View>
-
-
-
-        </View>
-      </Background>
+      </View>
+    </Background>
   )
 }
 export default Login
