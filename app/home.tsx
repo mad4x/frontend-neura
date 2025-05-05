@@ -2,6 +2,7 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
+import {router} from "expo-router";
 
 const Home = () => {
     return (
@@ -19,19 +20,36 @@ const Home = () => {
 
                 <View className="items-center my-8 gap-y-10">
                     <CustomButton
-                        title="Conversazione"
-                        className="bg-blue-900 px-25 py-10 w-80 justify-center self-center"
-                        textStyle="text-white text-xl tracking-widest"
-                    />
-                    <CustomButton
                         title="Quiz - Giochi"
                         className="bg-blue-900 px-20 py-10 w-85 justify-center self-center"
                         textStyle="text-white text-xl tracking-widest"
+                        onPress={
+                            () => {
+                                router.push("/speakingGameRules")
+                            }
+                        }
                     />
                     <CustomButton
                         title="Progressi"
-                        className="bg-blue-300 px-20 py-10 w-80 justify-center self-center"
+                        className="bg-blue-900 px-20 py-10 w-80 justify-center self-center"
                         textStyle="text-white text-xl tracking-widest"
+                        onPress={
+                            () => {
+                                router.push("/progress")
+                            }
+                        }
+                    />
+                    <CustomButton
+                        title="Logout"
+                        className="bg-red-500 px-20 py-10 w-80 justify-center self-center"
+                        textStyle="text-white text-xl tracking-widest"
+                        onPress={
+                            () => {
+                                if (confirm("Sei sicuro di voler uscire?")) {
+                                    router.push("/login");
+                                }
+                            }
+                        }
                     />
                 </View>
             </View>
