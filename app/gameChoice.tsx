@@ -4,7 +4,7 @@ import Background from "@/components/Background";
 import CustomCard from "@/components/CustomCard";
 import {router} from "expo-router";
 
-const SpeakingGameRules = () => {
+const GameChoice = () => {
     return (
         <Background className="flex flex-1 flex-col align-center h-screen -z-10">
 
@@ -12,7 +12,7 @@ const SpeakingGameRules = () => {
                 {/* Title */}
                 <View className="flex flex-col justify-center items-left mt-16 mb-10">
                     <View className="gap-y-2">
-                        <Text className="text-4xl font-normal tracking-wide uppercase text-white">Regole del</Text>
+                        <Text className="text-4xl font-normal tracking-wide uppercase text-white">Scegli un</Text>
                         <Text className="text-6xl font-extrabold tracking-widest uppercase text-white">Gioco</Text>
                     </View>
                 </View>
@@ -37,4 +37,4 @@ const SpeakingGameRules = () => {
         </Background>
     )
 }
-export default SpeakingGameRules
+export default GameChoice

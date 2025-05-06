@@ -95,7 +95,7 @@ const SignIn = () => {
                   </View>
 
                   <CustomButton
-                      title="SignIn"
+                      title="Accedi"
                       className="bg-black px-10 py-3 self-start"
                       textStyle="text-white tracking-widest"
                       onPress={handleLogin}
