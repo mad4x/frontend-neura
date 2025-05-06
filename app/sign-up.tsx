@@ -70,7 +70,7 @@ const SignUp = () => {
                                 <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Registrati</Text>
                             </View>
 
-                            <View className="border rounded-xl bg-neutral-100 px-3 py-3">
+                            <View className="rounded-xl bg-neutral-100 px-3 py-3 elevation-2xl">
                                 <TextInput
                                     placeholder="email"
                                     placeholderTextColor="#404040"
@@ -80,7 +80,7 @@ const SignUp = () => {
                                 />
                             </View>
 
-                            <View className="border rounded-xl bg-neutral-100 px-3 py-3">
+                            <View className="rounded-xl bg-neutral-100 px-3 py-3 elevation-2xl">
                                 <TextInput
                                     placeholder="password"
                                     placeholderTextColor="#404040"
@@ -91,7 +91,7 @@ const SignUp = () => {
                                 />
                             </View>
 
-                            <View className="border rounded-xl bg-neutral-100 px-3 py-3">
+                            <View className="rounded-xl bg-neutral-100 px-3 py-3 elevation-2xl">
                                 <TextInput
                                     placeholder="conferma password"
                                     placeholderTextColor="#404040"

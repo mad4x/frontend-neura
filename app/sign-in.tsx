@@ -13,21 +13,25 @@ import { router } from "expo-router"
 import Background from "@/components/Background"
 import CustomButton from "@/components/CustomButton"
 import { api, icons } from "@/constants"
+import { saveToken } from "@/utils/secureStorage"
 
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
 
   const handleLogin = () => {
     api.post('/auth/login/', {
       email,
       password
     })
-        .then(response => {
-          console.log('login avvenuto', response.data)
+        .then(async response => {
+          console.log('login avvenuto', response.data);
+          await saveToken("jwtAccessToken", response.data.access);
+          await saveToken("jwtRefreshToken", response.data.refresh);
         })
         .catch(error => {
-          console.error('Errore durante il login', error.response?.data || error.message)
+          console.error('Errore durante il login', error.response?.data || error.message);
         })
   }
 
@@ -58,7 +62,7 @@ const SignIn = () => {
                     Accedi
                   </Text>
 
-                  <View className="border rounded-xl bg-neutral-100 px-3 py-3">
+                  <View className="rounded-xl bg-neutral-100 px-3 py-3">
                     <TextInput
                         placeholder="email"
                         placeholderTextColor="#404040"
@@ -70,7 +74,7 @@ const SignIn = () => {
                     />
                   </View>
 
-                  <View className="border rounded-xl bg-neutral-100 px-3 py-3">
+                  <View className="rounded-xl bg-neutral-100 px-3 py-3">
                     <TextInput
                         placeholder="password"
                         placeholderTextColor="#404040"
@@ -81,9 +85,9 @@ const SignIn = () => {
                     />
                   </View>
 
-                  <View className="rounded-2xl bg-[#133250] px-2 py-1 self-end">
+                  <View className="rounded-2xl bg-white elevation-2xl px-2 py-1 self-end">
                     <Text
-                        className="text-md text-right font-normal tracking-wide uppercase underline text-white"
+                        className="text-md text-right tracking-wide uppercase text-primary-dark font-semibold underline"
                         onPress={handleLogin}
                     >
                       Password dimenticata?
