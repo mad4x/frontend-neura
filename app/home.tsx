@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, {Component} from 'react';
 import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
-import {router} from "expo-router";
+import {Redirect, router} from "expo-router";
 
 const Home = () => {
     return (
@@ -13,7 +13,7 @@ const Home = () => {
                 <View className="flex flex-col justify-center items-left mt-16 mb-10">
                     <View className="gap-y-2">
                         <Text className="text-6xl font-extrabold tracking-wide uppercase text-white">Home</Text>
-                        <Text className="text-3xl font-extrabold tracking-wide uppercase text-white">Ciao!</Text>
+                        <Text className="text-3xl font-extrabold tracking-wide uppercase text-white">Ciao,</Text>
                         <Text className="text-3xl font-extrabold tracking-wide uppercase text-white">Antoooo</Text>
                     </View>
                 </View>
@@ -25,7 +25,7 @@ const Home = () => {
                         textStyle="text-white text-xl tracking-widest"
                         onPress={
                             () => {
-                                router.push("/speakingGameRules")
+                                router.push("//gameChoice")
                             }
                         }
                     />
@@ -46,7 +46,8 @@ const Home = () => {
                         onPress={
                             () => {
                                 if (confirm("Sei sicuro di voler uscire?")) {
-                                    router.push("/login");
+                                    router.dismissAll();
+                                    return <Redirect href="/login"/>
                                 }
                             }
                         }
