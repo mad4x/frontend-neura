@@ -4,8 +4,12 @@ import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";
 import {deleteAllTokens} from "@/utils/secureStorage";
+import useUserName from "@/hooks/useUserName";
+
 
 const Home = () => {
+    const userName = useUserName();
+
     return (
         <Background className="flex flex-1 flex-col align-center h-screen -z-10">
 
@@ -15,7 +19,9 @@ const Home = () => {
                     <View className="gap-y-2">
                         <Text className="text-7xl font-extrabold tracking-wide uppercase text-white">Home</Text>
                         <Text className="text-4xl font-extrabold tracking-wide uppercase text-white">Ciao,</Text>
-                        <Text className="text-4xl font-extrabold tracking-wide uppercase text-white">Antoooo</Text>
+                        <Text className="text-4xl font-extrabold tracking-wide uppercase text-white">
+                            {userName ?? "Diego"}
+                        </Text>
                     </View>
                 </View>
 
