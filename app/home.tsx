@@ -2,7 +2,8 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
-import {Redirect, router} from "expo-router";
+import { router } from "expo-router";
+import {deleteAllTokens} from "@/utils/secureStorage";
 
 const Home = () => {
     return (
@@ -43,14 +44,10 @@ const Home = () => {
                         title="Logout"
                         className="bg-red-500 px-20 py-10 w-80 justify-center self-center"
                         textStyle="text-white text-xl tracking-widest"
-                        onPress={
-                            () => {
-                                if (confirm("Sei sicuro di voler uscire?")) {
-                                    router.dismissAll();
-                                    return <Redirect href="/sign-in"/>
-                                }
-                            }
-                        }
+                        onPress={() => {
+                            deleteAllTokens().then();
+                            router.replace("/sign-in");
+                        }}
                     />
                 </View>
             </View>

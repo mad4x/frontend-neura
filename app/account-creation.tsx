@@ -17,9 +17,6 @@ import { api } from "@/constants";
 
 const AccountCreation = () => {
     const { email, password } = useLocalSearchParams();
-    const userEmail = email as string;
-    const userPassword = password as string;
-
     const [first_name, setFirst_name] = useState('');
     const [last_name, setLast_name] = useState('');
     const [birthDate, setBirthDate] = useState(new Date());
@@ -110,6 +107,7 @@ const AccountCreation = () => {
 
                             {showDatePicker && (
                                 <DateTimePicker
+                                    className="border-0 px-3 py-3"
                                     value={birthDate}
                                     mode="date"
                                     display={Platform.OS === 'ios' ? 'spinner' : 'default'}

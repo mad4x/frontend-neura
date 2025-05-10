@@ -29,6 +29,7 @@ const SignIn = () => {
           console.log('login avvenuto', response.data);
           await saveToken("jwtAccessToken", response.data.access);
           await saveToken("jwtRefreshToken", response.data.refresh);
+          router.replace("/home")
         })
         .catch(error => {
           console.error('Errore durante il login', error.response?.data || error.message);

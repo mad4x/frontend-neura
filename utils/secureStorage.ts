@@ -14,3 +14,8 @@ export const getToken = async (key: string) => {
 export const deleteToken = async (key:string) => {
     await SecureStore.deleteItemAsync(key);
 };
+
+export const deleteAllTokens = async () => {
+    await deleteToken("jwtAccessToken");
+    await deleteToken("jwtRefreshToken");
+};
