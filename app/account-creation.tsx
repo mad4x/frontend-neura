@@ -12,14 +12,15 @@ import React, { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Background from "@/components/Background";
 import CustomButton from "@/components/CustomButton";
-import { useLocalSearchParams } from 'expo-router';
+import {router, useLocalSearchParams} from 'expo-router';
 import { api } from "@/constants";
+import {saveToken} from "@/utils/secureStorage";
 
 const AccountCreation = () => {
     const { email, password } = useLocalSearchParams();
     const [first_name, setFirst_name] = useState('');
     const [last_name, setLast_name] = useState('');
-    const [birthDate, setBirthDate] = useState(new Date());
+    const [birthDate, setBirthDate] = useState<Date | null>(null);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [error, setError] = useState('');
 
@@ -49,6 +50,19 @@ const AccountCreation = () => {
             birth_date: birthDate.toLocaleDateString('it-IT')
         }).then(response => {
             console.log('Registrazione avvenuta', response.data);
+            api.post('/auth/login/', {
+                email,
+                password
+            })
+                .then(async response => {
+                    console.log('login avvenuto', response.data);
+                    await saveToken("jwtAccessToken", response.data.access);
+                    await saveToken("jwtRefreshToken", response.data.refresh);
+                    router.replace("/home")
+                })
+                .catch(error => {
+                    console.error('Errore durante il login', error.response?.data || error.message);
+                })
         })
             .catch (error => {
                 console.error('Errore durante la registrazione', error.response?.data || error.message);
@@ -76,7 +90,7 @@ const AccountCreation = () => {
                                     <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Registrati</Text>
                                 </View>
 
-                                <View className="border rounded-xl bg-neutral-100 px-3 py-3">
+                                <View className="elevation-2xl rounded-xl bg-neutral-100 px-3 py-3">
                                     <TextInput
                                         placeholder="Nome"
                                         placeholderTextColor="#404040"
@@ -86,7 +100,7 @@ const AccountCreation = () => {
                                     />
                                 </View>
 
-                                <View className="border rounded-xl bg-neutral-100 px-3 py-3">
+                                <View className="elevation-2xl rounded-xl bg-neutral-100 px-3 py-3">
                                     <TextInput
                                         placeholder="Cognome"
                                         placeholderTextColor="#404040"
@@ -97,29 +111,29 @@ const AccountCreation = () => {
                                 </View>
 
 
-                                <View className="border rounded-xl bg-neutral-100 px-3 py-3">
-                                <Pressable onPress={() => setShowDatePicker(true)}>
-                                    <Text className="text-gray-700">
-                                        {birthDate.toLocaleDateString('it-IT')}
-                                    </Text>
-                                </Pressable>
-                            </View>
+                                <View className="elevation-2xl rounded-xl bg-neutral-100 px-3 py-3">
+                                    <Pressable onPress={() => setShowDatePicker(true)}>
+                                        <Text style={{ color: birthDate ? 'black' : '#404040' }}>
+                                            {birthDate ? birthDate.toLocaleDateString('it-IT') : 'Data di Nascita'}
+                                        </Text>
+                                    </Pressable>
+                                </View>
 
-                            {showDatePicker && (
-                                <DateTimePicker
-                                    className="border-0 px-3 py-3"
-                                    value={birthDate}
-                                    mode="date"
-                                    display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-                                    onChange={(event, selectedDate) => {
-                                        setShowDatePicker(false);
-                                        if (selectedDate) {
-                                            setBirthDate(selectedDate);
-                                        }
-                                    }}
-                                    maximumDate={new Date()}
-                                />
-                            )}
+                                {showDatePicker && (
+                                    <DateTimePicker
+                                        value={birthDate || new Date()}
+                                        mode="date"
+                                        display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                                        onChange={(event, selectedDate) => {
+                                            setShowDatePicker(false);
+                                            if (selectedDate) {
+                                                setBirthDate(selectedDate);
+                                            }
+                                        }}
+                                        maximumDate={new Date()}
+                                    />
+                                )}
+
 
 
 
