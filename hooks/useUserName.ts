@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import * as SecureStore from "expo-secure-store";
-import {jwtDecode} from "jwt-decode";
-import {getToken} from "@/utils/secureStorage";
+import { jwtDecode } from "jwt-decode";
+import { getToken } from "@/utils/secureStorage";
 import axios from "axios";
 
 type DecodedToken = {
-    user_id: string;
+    user_id: number;
 };
 
 export default function useUserName() {
-    const [name, setName] = useState<string | null>(null);
+    const [name, setName] = useState<string>("");
 
     useEffect(() => {
         const fetchName = async () => {
@@ -17,15 +16,20 @@ export default function useUserName() {
                 const token = await getToken("jwtAccessToken");
                 if (!token) return;
 
-                const decoded: DecodedToken = jwtDecode(token);
+                // Chiamalo così:
+                const decoded = jwtDecode<DecodedToken>(token);
                 console.log("decoded:", decoded);
 
-                const response = await axios.get("http://njord.vps.webdock.cloud/auth/list-users/");
-                const user = response.data.find((u: any) => u.id === decoded.user_id);
-                setName(user?.first_name || "Utente");
+                const res = await axios.get("http://njord.vps.webdock.cloud/auth/list-users/");
 
+                const user = Array.isArray(res.data)
+                    ? res.data.find((u: any) => u.id === decoded.user_id)
+                    : null;
+
+                setName(user?.first_name ?? "Utente");
             } catch (err) {
                 console.error("Errore nel recupero nome utente:", err);
+                setName("Utente");
             }
         };
 
