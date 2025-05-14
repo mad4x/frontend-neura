@@ -19,9 +19,7 @@ const Home = () => {
                     <View className="gap-y-2">
                         <Text className="text-7xl font-extrabold tracking-wide uppercase text-white">Home</Text>
                         <Text className="text-4xl font-extrabold tracking-wide uppercase text-white">Ciao,</Text>
-                        <Text className="text-4xl font-extrabold tracking-wide uppercase text-white">
-                            {userName ?? "Diego"}
-                        </Text>
+                        <Text className="text-4xl font-extrabold tracking-wide uppercase text-white">{userName || "Caricamento..."}</Text>
                     </View>
                 </View>
 
