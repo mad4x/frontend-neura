@@ -18,6 +18,7 @@ import { saveToken } from "@/utils/secureStorage"
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
 
   const handleLogin = () => {
@@ -29,10 +30,24 @@ const SignIn = () => {
           console.log('login avvenuto', response.data);
           await saveToken("jwtAccessToken", response.data.access);
           await saveToken("jwtRefreshToken", response.data.refresh);
+          setError("");
           router.replace("/home")
         })
         .catch(error => {
-          console.error('Errore durante il login', error.response?.data || error.message);
+          if (error.response) {
+            const status = error.response.status;
+            const data = error.response.data;
+
+            if (status === 401) {
+              setError("Credenziali non valide. Riprova.");
+            } else if (status === 500) {
+              setError("Errore interno del server. Riprova più tardi.");
+            } else {
+              setError(data.message || "Si è verificato un errore. Riprova.");
+            }
+          } else {
+            setError("Impossibile connettersi al server. Controlla la tua connessione.");
+          }
         })
   }
 
@@ -101,6 +116,11 @@ const SignIn = () => {
                       textStyle="text-white tracking-widest"
                       onPress={handleLogin}
                   />
+
+                  {error &&
+                      <Text className="text-md tracking-wide text-red-600">{error}</Text>
+                  }
+
                 </View>
 
                 <View className="flex flex-col bg-black h-[1.5px]" />

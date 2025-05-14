@@ -85,12 +85,12 @@ const AccountCreation = () => {
                                 </View>
                             </View>
 
-                            <View className="flex flex-col justify-center items-left my-8 gap-y-3.5">
+                            <View className="flex flex-col justify-center items-left my-8 gap-y-5">
                                 <View>
                                     <Text className="text-3xl font-normal tracking-wide uppercase mx-2 text-white">Registrati</Text>
                                 </View>
 
-                                <View className="elevation-2xl rounded-xl bg-neutral-100 px-3 py-3">
+                                <View className="elevation-2xl rounded-xl bg-neutral-100 px-3 py-2.5">
                                     <TextInput
                                         placeholder="Nome"
                                         placeholderTextColor="#404040"
@@ -100,7 +100,7 @@ const AccountCreation = () => {
                                     />
                                 </View>
 
-                                <View className="elevation-2xl rounded-xl bg-neutral-100 px-3 py-3">
+                                <View className="elevation-2xl rounded-xl bg-neutral-100 px-3 py-2.5">
                                     <TextInput
                                         placeholder="Cognome"
                                         placeholderTextColor="#404040"
@@ -111,7 +111,7 @@ const AccountCreation = () => {
                                 </View>
 
 
-                                <View className="elevation-2xl rounded-xl bg-neutral-100 px-3 py-3">
+                                <View className="elevation-2xl rounded-xl bg-neutral-100 px-3 py-5">
                                     <Pressable onPress={() => setShowDatePicker(true)}>
                                         <Text style={{ color: birthDate ? 'black' : '#404040' }}>
                                             {birthDate ? birthDate.toLocaleDateString('it-IT') : 'Data di Nascita'}

@@ -5,7 +5,7 @@ import CustomButton from "@/components/CustomButton";
 import { AudioCaptureScreenProps } from "@/types/type";
 import {api} from "@/constants";
 import {getToken} from "@/utils/secureStorage";
-import LoadingScreen from "@/components/LoadingScreen";
+import LoadingComponent from "@/components/LoadingComponent";
 import {router} from "expo-router";
 
 const AudioCaptureScreen: React.FC<AudioCaptureScreenProps> = ({refreshSentence}) => {
@@ -57,8 +57,6 @@ const AudioCaptureScreen: React.FC<AudioCaptureScreenProps> = ({refreshSentence}
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`
-                // Aggiungi qui altri header se necessari, come token di autenticazione
-                // 'Authorization': `Bearer TUO_TOKEN`,
             },
             // Puoi aggiungere un timeout se necessario
             // timeout: 10000, // 10 secondi
@@ -71,6 +69,8 @@ const AudioCaptureScreen: React.FC<AudioCaptureScreenProps> = ({refreshSentence}
         }).then(response => {
             setIsSubmitting(false);
             return router.replace("/home");
+        }).catch(error => {
+            console.error(error.data);
         });
     }
 
@@ -81,7 +81,11 @@ const AudioCaptureScreen: React.FC<AudioCaptureScreenProps> = ({refreshSentence}
     };
 
     if (isSubmitting) {
-        return <LoadingScreen></LoadingScreen>
+        return (
+            <View className="z-50 flex items-center justify-center rounded-xl">
+                <LoadingComponent />
+            </View>
+        );
     }
 
     return (
@@ -89,17 +93,17 @@ const AudioCaptureScreen: React.FC<AudioCaptureScreenProps> = ({refreshSentence}
             {!audioUri ? (
                 <AudioRecorder onRecordingFinished={handleRecordingFinished} />
             ) : (
-                <View className="gap-y-4 my-8">
+                <View className="gap-y-4 my-8 items-center">
                     <Text className="text-white text-xl">Registrazione completata! Vuoi inviarla?</Text>
                     <CustomButton
                         title="✅ Invia"
-                        className="bg-green-700 mt-10 py-4 px-10"
+                        className="bg-green-700 mt-10 py-4 px-32"
                         textStyle="text-white text-xl"
                         onPress={handleInvia}
                     />
                     <CustomButton
                         title="🔁 Rifai"
-                        className="bg-red-700 mt-3 py-4 px-10"
+                        className="bg-red-700 mt-3 py-4 px-32"
                         textStyle="text-white text-xl"
                         onPress={handleRipeti}
                     />

@@ -24,6 +24,6 @@ export const refreshToken = async () => {
         saveToken("jwtAccessToken", response.data.access);
         console.log("access token aggiornato con successo");
     }).catch(error => {
-        console.error('Errore durante il refresh', error.response?.data || error.message)
+        console.log('Errore durante il refresh', error.response?.data || error.message)
     });
 }
