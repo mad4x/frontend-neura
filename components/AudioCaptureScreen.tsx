@@ -7,10 +7,13 @@ import {api} from "@/constants";
 import {getToken} from "@/utils/secureStorage";
 import LoadingComponent from "@/components/LoadingComponent";
 import {router} from "expo-router";
+import useUserName from "@/hooks/useUserName";
+import {refreshToken} from "@/utils/authUtils";
 
 const AudioCaptureScreen: React.FC<AudioCaptureScreenProps> = ({refreshSentence}) => {
     const [audioUri, setAudioUri] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const userName = useUserName();
 
     const handleRecordingFinished = (uri: string) => {
         setAudioUri(uri);
@@ -35,15 +38,7 @@ const AudioCaptureScreen: React.FC<AudioCaptureScreenProps> = ({refreshSentence}
         const fileParts = fileName.split('.');
         const fileType = fileParts[fileParts.length - 1];
 
-        // Per React Native CLI, potresti aver bisogno di `react-native-fs` per ottenere le informazioni del file.
-        // Per Expo, puoi usare `expo-file-system`.
-
-        // Esempio con expo-file-system per ottenere il tipo MIME corretto se necessario,
-        // ma per l'upload con FormData, spesso il nome del file con l'estensione è sufficiente.
-        // const fileInfo = await FileSystem.getInfoAsync(audioUri);
-        // const mimeType = fileInfo.exists ? `audio/${fileType}` : 'application/octet-stream'; // Fallback generico
-
-        formData.append('name', "Francesco");
+        formData.append('name', userName);
         formData.append('audio_file', { // 'file' è il nome del campo che l'API si aspetta
             uri: audioUri,
             name: fileName,
@@ -51,7 +46,8 @@ const AudioCaptureScreen: React.FC<AudioCaptureScreenProps> = ({refreshSentence}
         } as any); // 'as any' è usato qui perché la definizione di tipo standard potrebbe non corrispondere perfettamente
 
 
-        const token = await getToken("jwtAccessToken")
+        await refreshToken();
+        const token = await getToken("jwtAccessToken");
 
         await api.post("/api/audio-create/", formData, {
             headers: {
@@ -70,7 +66,9 @@ const AudioCaptureScreen: React.FC<AudioCaptureScreenProps> = ({refreshSentence}
             setIsSubmitting(false);
             return router.replace("/home");
         }).catch(error => {
-            console.error(error.data);
+            setIsSubmitting(false);
+            console.log(error.message);
+            return router.replace("/home");
         });
     }
 
