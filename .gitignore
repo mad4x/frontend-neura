@@ -38,5 +38,3 @@ yarn-error.*
 app-example
 
 .idea
-package-lock.json
-eas.json
