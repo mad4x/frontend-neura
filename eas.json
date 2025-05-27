@@ -1,9 +1,11 @@
 {
   "cli": {
-    "version": ">=3.7.2"
+    "version": ">=3.7.2",
+    "appVersionSource": "remote"
   },
   "build": {
     "production": {
+      "autoIncrement": true,
       "distribution": "internal",
       "android": {
         "buildType": "apk"
